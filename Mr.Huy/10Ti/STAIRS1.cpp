@@ -1,3 +1,8 @@
+/*main idea: bignum & dp
+- generate string array (dp)
+- zero and first step are 1 way, second step is 2 ways
+- then the third and more we will perform this fomula: dp[i] = dp[i-1]+dp[i-2]
++ sum of previous ways + sum of two last ways*/
 #include <bits/stdc++.h>
 typedef long long ll;
 #define FOR(i,l,r) for (int i=l;i<=r;i++)
