@@ -13,18 +13,21 @@ typedef unsigned long long int ull;
 using namespace std;
 
 
-void primefactors(ll n,set<int> a){
-    while (n%2 == 0) {
-        a.insert(2);
-        n = n/2;
-    }
-    for(int i = 3; i <= sqrt(n); i = i+2) {
-        while (n%i == 0) {
-            a.insert(i);
-            n = n/i;
-        }
-    }
-    if (n > 2) a.insert(n);
+
+void fact(long long n)
+{
+ long long j,d=0,i=2,t;
+ while(n>1 && i<=sqrt(n))
+       {
+           if (n%i==0)
+           {
+                n/=i;
+                if (n==1) cout << i << "*";
+                 else cout << i << "*";
+           }
+               else i++;
+       }
+       if (n>1){cout<<n<<"\n";}
 }
 
 int demuoc(int n) {
@@ -41,21 +44,17 @@ int demuoc(int n) {
 void solve(){
     int M;
     cin >> M;
-    set<int> a;
-    primefactors(M, a);
     cout << demuoc(M) << " ";
-    cout << *a.begin();
-    a.erase(0);
-    set<int>::iterator i;
-    for( i = a.begin(); i != a.end(); i++) cout << "*" << *i;
-    cout << '\n';
+    fact(M);
 }
 
 int main(){
     fast;
-    //freopen("NTO.inp","r",stdin);
-    //freopen("NTO.out","w",stdout);
+    freopen("NTO.inp","r",stdin);
+    freopen("NTO.out","w",stdout);
     int t;
     cin >> t;
-    while (t--) solve();
+    while (t--) {
+        solve();
+    }
 }
