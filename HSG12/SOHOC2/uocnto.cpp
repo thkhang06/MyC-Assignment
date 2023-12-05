@@ -44,8 +44,8 @@ void solve(){
 
 int main(){
     fast;
-    //freopen("SUB.inp","r",stdin);
-    //freopen("SUB.out","w",stdout);
+    //freopen("uocnto.inp","r",stdin);
+    //freopen("uocnto.out","w",stdout);
     sieve(1000000);
     int t;
     cin >> t;
