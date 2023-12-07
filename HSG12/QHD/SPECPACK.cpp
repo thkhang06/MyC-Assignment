@@ -13,34 +13,41 @@ typedef unsigned long long int ull;
 using namespace std;
 const ll N = 1e5+5;
 
-ll n, k;
-ll a;
+ll n;
+ll a[N], d[N];
 bool prime[1000000];
-vector<ll> seq, dp(1000000), b;
+vector<ll> l2, dp2(100000);
 
-void sieve() {
+void sieve(int n) {
     memset(prime, true, sizeof(prime));
     prime[0] = prime[1] = false;
-    for(int i = 2; i*i <= 1000000; i++)
-        if (prime[i])
-            for(int j = i*i; j <= 1000000; j += i) prime[i] = false;
+    for(int i = 2; i*i <= n; i++)
+        if (prime[i]) for(int j = i*i; j <= n; j += i) prime[j] = false;
 }
 
 void solve(){
     cin >> n;
-    sieve();
-    FOR(i,0,n-1) {cin >> a; if (prime[a]) b.pub(a);}
-    ll maxn = 0;
-    n = b.size();
-    seq.pub(b[n-1]);
-    FOD(i,n-2,0) {
-        if (seq.back() > b[i]) seq.pub(b[i]);
-        else {
-            int idx = lower_bound(seq.begin(),seq.end(),b[i]) - seq.begin();
-            seq[idx] = b[i];
+    sieve(1000000);
+    ll m = -1, maxn = 0;
+    FOR(i,1,n) {
+        ll x;
+        cin >> x;
+        if (prime[x]) {
+            m++;
+            a[m] = x;
         }
-        dp[i] = seq.size();
-        maxn = max(maxn, dp[i]);
+    }
+    cout << m << " ";
+    FOR(i,0,m-1) cout << a[i] << " ";
+    l2.pub(a[m-1]);
+    FOD(i,m-2,0) {
+        if (l2.back() < a[i]) l2.pub(a[i]);
+        else {
+            int inx = lower_bound(l2.begin(),l2.end(),a[i])-l2.begin();
+            l2[inx] = a[i];
+        }
+        dp2[i] = l2.size();
+        maxn = max(maxn, dp2[i]);
     }
     cout << maxn;
 }
