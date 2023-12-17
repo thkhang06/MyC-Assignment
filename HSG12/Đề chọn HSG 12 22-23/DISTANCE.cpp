@@ -13,21 +13,24 @@ typedef unsigned long long int ull;
 using namespace std;
 const int N = 1e6+5;
 
-ll a1, a2, a3;
+double x, y, maxx, maxy, s;
 
 void solve(){
-    cin >> a1 >> a2 >> a3;
-    if (a1 > max(a2,a3)) {
-        cout << 0;
-        return;
+    int n;
+    cin >> n;
+    FOR(i,1,n) {
+        cin >> x >> y;
+        maxx = max(maxx, x);
+        maxy = max(maxy, y);
     }
-    cout << max(a2,a3) - a1 + 1;
+    s = sqrt(maxx*maxx + maxy*maxy);
+    cout << setprecision(5) << fixed << s;
 }
 
 int main(){
     fast;
-    // freopen("VOTEMAST.inp","r",stdin);
-    // freopen("VOTEMAST.out","w",stdout);
+    // freopen("DISTANCE.inp","r",stdin);
+    // freopen("DISTANCE.out","w",stdout);
     solve();
     return 0;
 }
